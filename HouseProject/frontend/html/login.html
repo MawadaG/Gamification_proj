@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hogwarts Login</title>
+    <link rel="stylesheet" href="../css/login.css">
+
+
+</head>
+
+<body>
+
+
+    <div class="stars" style="left:10%; top:90%; animation-delay:1s;"></div>
+    <div class="stars" style="left:20%; top:85%; animation-delay:2s;"></div>
+    <div class="stars" style="left:30%; top:95%; animation-delay:3s;"></div>
+    <div class="stars" style="left:40%; top:88%; animation-delay:4s;"></div>
+    <div class="stars" style="left:50%; top:92%; animation-delay:1s;"></div>
+    <div class="stars" style="left:60%; top:89%; animation-delay:2s;"></div>
+    <div class="stars" style="left:70%; top:95%; animation-delay:3s;"></div>
+    <div class="stars" style="left:80%; top:90%; animation-delay:4s;"></div>
+
+    <div class="login-container">
+        <div class="login-card">
+            <div class="logo">ACM</div>
+            <p class="tagline">Enter your credentials below!</p>
+
+            <form>
+                <div class="input-group">
+                    <label for="username">Email</label>
+                    <input type="email" name="email" placeholder="Enter your email" required>
+                </div>
+
+                <div class="input-group">
+                    <label for="password">Password</label>
+                    <input type="password" name="password" placeholder="Your password" required>
+                </div>
+
+                <button type="submit" class="login-btn">Enter division </button>
+            </form>
+
+            <div class="signup-link">
+                Don't have an account? <a href="./signin.html"> Enroll at ACM</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="sparkle" style="left: 30%; bottom: 20%; animation-delay: 1s;"></div>
+    <div class="sparkle" style="left: 60%; bottom: 25%; animation-delay: 2s;"></div>
+    <div class="sparkle" style="left: 80%; bottom: 15%; animation-delay: 3s;"></div>
+
+    <script>
+        document.querySelector('form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const email = e.target.elements.email.value;
+            const password = e.target.elements.password.value;
+
+            const res = await fetch('/api/login', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email, password })
+            });
+
+            const data = await res.json().catch(() => ({}));
+            if (!res.ok) {
+                alert(data.error || 'Login failed');
+                return;
+            }
+            // Cookie set by server — just go to homepage
+            location.href = '/';
+        });
+    </script>
+
+
+</body>
+
+</html>

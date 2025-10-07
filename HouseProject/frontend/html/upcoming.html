@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Upcoming Events | House Cup</title>
+  <link rel="stylesheet" href="../css/upcoming.css" />
+</head>
+
+<body class="hw-body">
+  <header class="site-nav">
+    <div class="site-nav__wrap">
+      <h1 class="site-brand">🏆 Menu bar</h1>
+      <nav class="site-links">
+        <a href="homepage.html">Home</a>
+        <a href="upcoming.html">Events</a>
+        <a href="commonRoom.html">Rooms</a>
+
+        <!-- Shown when NOT logged in -->
+        <a id="loginLink" href="login.html">Login</a>
+        <a id="signupLink" href="signin.html" class="btn-pill">Sign Up</a>
+
+        <!-- Shown when logged in -->
+        <span id="welcomeName" style="display:none; margin-left:12px;"></span>
+        <button id="logoutBtn" style="display:none; margin-left:8px;">Logout</button>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hw-hero">
+      <div class="hw-hero__inner">
+        <h1 class="hw-title">Upcoming Events</h1>
+        <p class="hw-subtitle">Earn XP, unlock badges, and rally your House.</p>
+      </div>
+    </section>
+
+    <!-- 🔹 Static cards + placeholder container -->
+    <section class="ue-section">
+      <div class="ue-wrap">
+        <!-- If later you want fully dynamic rendering, JS can replace everything inside this div -->
+        <div class="ue-grid" id="events-list">
+          <!-- Gryffindor -->
+          <article id="evt-apis" class="ue-card gryffindor">
+            <div class="ue-corner" aria-hidden="true">🦁</div>
+            <div class="ue-date-ribbon"><span class="ue-date-day">12</span><span class="ue-date-month">OCT</span></div>
+            <div class="ue-card-body">
+              <h3 class="ue-card-title">Hack &amp; Learn: Intro to APIs</h3>
+              <p class="ue-card-desc">Build your first API in 45 minutes. Earn <strong>+50 XP</strong> and the
+                <strong>“Code Sprinter”</strong> badge.</p>
+              <ul class="ue-tags">
+                <li>Workshop</li>
+                <li>Beginner</li>
+                <li>+50 XP</li>
+              </ul>
+              <div class="ue-capacity" style="--fill:72%">
+                <div class="ue-capacity-bar"></div>
+                <span class="ue-capacity-label">18 / 25 seats</span>
+              </div>
+              <div class="ue-actions">
+                <a href="#" class="hw-btn hw-btn--house">RSVP Now</a>
+                <button class="hw-btn hw-btn--ghost">Details</button>
+                <!-- 🔸 Backend hook -->
+                <button class="hw-btn hw-btn--house checkin" data-event-id="evt-apis">Check in (+50 XP)</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Ravenclaw -->
+          <article id="evt-sql" class="ue-card ravenclaw">
+            <div class="ue-corner" aria-hidden="true">🦅</div>
+            <div class="ue-date-ribbon"><span class="ue-date-day">15</span><span class="ue-date-month">OCT</span></div>
+            <div class="ue-card-body">
+              <h3 class="ue-card-title">Data Quest: SQL Challenge Night</h3>
+              <p class="ue-card-desc">Crack query puzzles to unlock <strong>“Logic Seeker”</strong>. Top 3 get
+                <strong>+100 XP</strong>.</p>
+              <ul class="ue-tags">
+                <li>Challenge</li>
+                <li>Intermediate</li>
+                <li>+80–100 XP</li>
+              </ul>
+              <div class="ue-capacity" style="--fill:40%">
+                <div class="ue-capacity-bar"></div>
+                <span class="ue-capacity-label">20 / 50 seats</span>
+              </div>
+              <div class="ue-actions">
+                <a href="#" class="hw-btn hw-btn--house">Join Challenge</a>
+                <button class="hw-btn hw-btn--ghost">Details</button>
+                <!-- 🔸 Backend hook -->
+                <button class="hw-btn hw-btn--house checkin" data-event-id="evt-sql">Check in (+90 XP)</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Slytherin -->
+          <article id="evt-ux" class="ue-card slytherin">
+            <div class="ue-corner" aria-hidden="true">🐍</div>
+            <div class="ue-date-ribbon"><span class="ue-date-day">20</span><span class="ue-date-month">OCT</span></div>
+            <div class="ue-card-body">
+              <h3 class="ue-card-title">UX Sprint: Micro-Interactions</h3>
+              <p class="ue-card-desc">Design delightful hovers & toasts. Earn <strong>+60 XP</strong> and
+                <strong>“Motion Crafter”</strong>.</p>
+              <ul class="ue-tags">
+                <li>Design</li>
+                <li>All Levels</li>
+                <li>+60 XP</li>
+              </ul>
+              <div class="ue-capacity" style="--fill:90%">
+                <div class="ue-capacity-bar"></div>
+                <span class="ue-capacity-label">45 / 50 seats</span>
+              </div>
+              <div class="ue-actions">
+                <a href="#" class="hw-btn hw-btn--house">Save My Spot</a>
+                <button class="hw-btn hw-btn--ghost">Details</button>
+                <!-- 🔸 Backend hook -->
+                <button class="hw-btn hw-btn--house checkin" data-event-id="evt-ux">Check in (+60 XP)</button>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <footer class="ue-footer">
+          <a href="#" class="hw-btn hw-btn--outline">View Full Calendar</a>
+          <a href="#" class="hw-link">How to earn badges →</a>
+        </footer>
+      </div>
+    </section>
+  </main>
+
+  <footer class="hw-footer">
+    <p>© House Cup — Gamified Student Platform</p>
+    <div class="sparkle" style="left: 30%; bottom: 10%; animation-delay: 1s;"></div>
+    <div class="sparkle" style="left: 60%; bottom: 8%; animation-delay: 2s;"></div>
+    <div class="sparkle" style="left: 80%; bottom: 12%; animation-delay: 3s;"></div>
+  </footer>
+  <script src="../js/auth-nav.js"></script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,728 @@
+/* Professional fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: radial-gradient(circle at top, #0b0b19, #000);
+  color: #f5f3e7;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Floating stars animation */
+@keyframes floatStars {
+  from {
+    transform: translateY(0px);
+    opacity: 0.7;
+  }
+
+  to {
+    transform: translateY(-1000px);
+    opacity: 0;
+  }
+}
+
+.stars {
+  position: fixed;
+  width: 2px;
+  height: 2px;
+  background: #f4e2a8;
+  animation: floatStars 10s linear infinite;
+  border-radius: 50%;
+  opacity: 0.6;
+}
+
+/* Generate random stars */
+.stars:nth-child(odd) {
+  animation-duration: 12s;
+}
+
+.stars:nth-child(even) {
+  animation-duration: 8s;
+}
+
+/* ======= Shared Hogwarts Header (matches homepage) ======= */
+
+/* ======= Shared Hogwarts Header (Thicker, Homepage Match) ======= */
+/* ======= Shared Hogwarts Header (Exact Homepage Match) ======= */
+:root {
+  --nav-start: #3b5bdb;
+  --nav-end: #6c63ff;
+  --nav-accent: #f3e69c;
+  --nav-text: #ffffff;
+  --container-w: min(1100px, 92%);
+}
+
+body {
+  padding-top: 64px;
+}
+
+/* same as homepage */
+
+/* Header shell */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+
+  /* identical gradient layers */
+  background:
+    radial-gradient(1000px 600px at 10% -10%, rgba(139, 92, 246, .20), transparent 60%),
+    radial-gradient(900px 500px at 110% 10%, rgba(59, 130, 246, .16), transparent 60%),
+    linear-gradient(180deg, rgba(13, 17, 23, 0.9), rgba(13, 17, 23, 0.75));
+
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(255, 255, 255, .1);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, .35);
+  color: var(--nav-text);
+  padding: 12px 0;
+  /* exact padding */
+}
+
+/* Inner layout */
+header .nav-wrap {
+  width: var(--container-w);
+  margin-inline: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0;
+  /* matches homepage */
+}
+
+/* Logo / brand text */
+header h1 {
+  margin: 0;
+  font-family: 'Cinzel Decorative', serif;
+  font-weight: 700;
+  letter-spacing: .3px;
+  font-size: 18px;
+  color: #f7d774;
+  text-shadow: 0 0 10px #f7d77470;
+}
+
+/* Navigation links */
+.site-links {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.site-links a {
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 700;
+  opacity: .95;
+  padding: 8px 10px;
+  border-radius: 10px;
+  transition: .2s ease;
+}
+
+.site-links a:hover {
+  background: rgba(255, 255, 255, .14);
+  color: var(--nav-accent);
+}
+
+/* CTA Pill */
+.btn-pill {
+  background: var(--nav-accent);
+  color: #1a1a1a !important;
+  padding: 8px 14px;
+  border-radius: 999px;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, .25);
+}
+
+.btn-pill:hover {
+  filter: brightness(1.05);
+}
+
+/* Responsive */
+@media (max-width: 520px) {
+  .site-links {
+    gap: 10px;
+  }
+
+  header h1 {
+    font-size: 16px;
+  }
+}
+
+
+/* Make room for sticky header */
+
+
+/* Header links (right side) */
+
+
+
+
+/* CTA pill button */
+
+
+
+main {
+  padding: 3rem 5rem;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 2rem;
+  position: relative;
+  z-index: 1;
+  max-width: 1400px;
+  margin: auto;
+}
+
+.chat-container {
+  background: linear-gradient(135deg, #2d1a40, #4c2b63);
+  border: 1px solid rgba(182, 147, 58, 0.5);
+  border-radius: 15px;
+  box-shadow: 0 0 20px rgba(145, 76, 255, 0.2);
+  display: flex;
+  flex-direction: column;
+  height: 600px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.chat-container:hover {
+  transform: scale(1.01);
+  box-shadow: 0 0 35px rgba(187, 134, 252, 0.4);
+}
+
+.chat-header {
+  padding: 1.5rem;
+  text-align: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.chat-header h2 {
+  font-family: 'Cinzel Decorative', serif;
+  color: #f7d774;
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  text-shadow: 0 0 8px #f7d77470;
+}
+
+.chat-header p {
+  opacity: 0.8;
+  font-size: 0.95rem;
+}
+
+.messages-area {
+  flex: 1;
+  padding: 1rem;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.message {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  padding: 1rem;
+  max-width: 80%;
+  align-self: flex-start;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s;
+}
+
+.message:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.own-message {
+  align-self: flex-end;
+  background: linear-gradient(135deg, #b57aff, #d4a5ff);
+  color: #0b0b19;
+}
+
+.user-info {
+  font-size: 0.85rem;
+  margin-bottom: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.user-info strong {
+  color: #f7d774;
+}
+
+.timestamp {
+  opacity: 0.6;
+  font-size: 0.8rem;
+}
+
+.message p {
+  margin: 0;
+  line-height: 1.4;
+}
+
+.input-area {
+  display: flex;
+  padding: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  gap: 0.5rem;
+}
+
+#messageInput {
+  flex: 1;
+  padding: 0.75rem;
+  border: 1px solid rgba(182, 147, 58, 0.3);
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  outline: none;
+  font-size: 0.95rem;
+}
+
+#messageInput:focus {
+  border-color: #f7d774;
+  box-shadow: 0 0 8px rgba(247, 215, 116, 0.5);
+}
+
+#sendBtn {
+  background: linear-gradient(135deg, #b6933a, #f4e2a8);
+  color: #0b0b19;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s;
+}
+
+#sendBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 15px rgba(247, 215, 116, 0.7);
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid #b6933a50;
+  border-radius: 15px;
+  padding: 1.5rem;
+  box-shadow: 0 0 20px rgba(182, 147, 58, 0.2);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 0 35px rgba(247, 215, 116, 0.4);
+}
+
+.card h2 {
+  font-family: 'Cinzel Decorative', serif;
+  color: #f7d774;
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+  text-shadow: 0 0 8px #f7d77470;
+}
+
+/* XP bar */
+.progress-bar {
+  background-color: #333;
+  border-radius: 25px;
+  height: 18px;
+  overflow: hidden;
+  margin-top: 0.5rem;
+}
+
+.progress {
+  background: linear-gradient(90deg, #b6933a, #f4e2a8, #b6933a);
+  height: 100%;
+  border-radius: 25px;
+  transition: width 0.3s ease;
+}
+
+@keyframes glowXP {
+  from {
+    box-shadow: 0 0 10px #f7d774;
+  }
+
+  to {
+    box-shadow: 0 0 25px #f4e2a8;
+  }
+}
+
+/* Events and lists */
+.events,
+.online-list {
+  list-style: none;
+  padding: 0;
+}
+
+.events li,
+.online-list li {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  transition: 0.2s;
+  font-size: 0.9rem;
+}
+
+.events li:hover,
+.online-list li:hover {
+  color: #f7d774;
+  transform: scale(1.02);
+}
+
+footer {
+  text-align: center;
+  padding: 1rem;
+  border-top: 2px solid #b6933a;
+  background-color: rgba(10, 10, 20, 0.8);
+  font-size: 0.9rem;
+  color: #f4e2a8;
+  text-shadow: 0 0 5px #b6933a;
+  margin-top: 2rem;
+}
+
+/* Add some animated sparkles */
+@keyframes sparkle {
+
+  0%,
+  100% {
+    opacity: 0.2;
+    transform: scale(0.8);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+
+.sparkle {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: #f7d774;
+  border-radius: 50%;
+  animation: sparkle 2s infinite ease-in-out;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  main {
+    grid-template-columns: 1fr;
+    padding: 1rem;
+  }
+
+  .chat-container {
+    height: 500px;
+  }
+}
+
+.hw-hero {
+  text-align: center;
+  padding: 4rem 1rem;
+  background: linear-gradient(180deg, rgba(13, 17, 23, 0) 0%, rgba(13, 17, 23, 0.5) 100%);
+}
+
+.hw-title {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  color: #f7d774;
+  text-shadow: 0 0 15px rgba(247, 215, 116, 0.5);
+  margin: 0;
+}
+
+.hw-subtitle {
+  font-size: clamp(1rem, 2.5vw, 1.25rem);
+  color: #c0c0c0;
+  margin: 0.5rem 0 0;
+  opacity: 0.9;
+}
+
+.hw-body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: radial-gradient(circle at top, #0b0b19, #000);
+  color: #f5f3e7;
+  overflow-x: hidden;
+  /* Make room for sticky header */
+  padding-top: 64px;
+}
+
+/* ==========================================================================
+   2. Shared Header (from your provided base)
+   ========================================================================== */
+.site-nav {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+
+  /* match the page's starry gradient + subtle dark overlay */
+  background:
+    radial-gradient(1000px 600px at 10% -10%, rgba(139, 92, 246, .20), transparent 60%),
+    radial-gradient(900px 500px at 110% 10%, rgba(59, 130, 246, .16), transparent 60%),
+    linear-gradient(180deg, rgba(13, 17, 23, 0.9), rgba(13, 17, 23, 0.75));
+
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(255, 255, 255, .1);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, .35);
+  color: var(--nav-text);
+}
+
+.site-nav__wrap {
+  width: var(--container-w);
+  margin-inline: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 0;
+}
+
+.site-brand {
+  margin: 0;
+  font-family: 'Cinzel Decorative', serif;
+  font-weight: 700;
+  letter-spacing: .3px;
+  font-size: 18px;
+  color: #f7d774;
+  text-shadow: 0 0 10px #f7d77470;
+}
+
+/* ===================== PROFESSIONAL THEME OVERRIDES (fonts + colors only) ===================== */
+
+/* Palette (neutral slate + brand blue accent) */
+:root {
+  --ink: #e5e7eb;
+  /* main text */
+  --muted: #cbd5e1;
+  /* secondary text */
+  --edge: #334155;
+  /* borders */
+  --brand-900: #0f172a;
+  /* deep bg */
+  --brand-800: #111827;
+  /* cards/depth */
+  --brand-700: #1f2937;
+  /* alt depth */
+  --brand-blue: #3b82f6;
+  /* accent (links/CTAs) */
+
+  /* header gradient */
+  --nav-start: #0f172a;
+  --nav-end: #1f2937;
+  --nav-accent: #3b82f6;
+  --nav-text: #ffffff;
+}
+
+/* ===== Base fonts (keep sizes, only typeface) ===== */
+body,
+.hw-body {
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif !important;
+  color: var(--ink) !important;
+  background: radial-gradient(circle at top, #0b0b19, #000);
+  /* keep your background layout */
+}
+
+/* ===== Header: colors only (same spacing/structure) ===== */
+header {
+  background:
+    radial-gradient(1000px 600px at 10% -10%, rgba(59, 130, 246, .18), transparent 60%),
+    radial-gradient(900px 500px at 110% 10%, rgba(30, 64, 175, .16), transparent 60%),
+    linear-gradient(180deg, rgba(15, 23, 42, 0.95), rgba(31, 41, 55, 0.85)) !important;
+  border-bottom: 1px solid rgba(148, 163, 184, .25) !important;
+  box-shadow: 0 8px 24px rgba(2, 6, 23, .45) !important;
+  color: var(--nav-text) !important;
+}
+
+/* Brand text: keep size/weight, only color */
+header h1,
+.site-brand {
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif !important;
+  color: var(--ink) !important;
+  text-shadow: 0 0 8px rgba(59, 130, 246, .15) !important;
+  /* subtle blue glow instead of gold */
+}
+
+/* Links: accent on hover only */
+.site-links a {
+  color: #ffffff !important;
+}
+
+.site-links a:hover {
+  background: rgba(255, 255, 255, .12) !important;
+  color: var(--nav-accent) !important;
+}
+
+/* CTA pill uses brand blue */
+.btn-pill {
+  background: var(--nav-accent) !important;
+  color: #0b0b19 !important;
+}
+
+/* ===== Cards/containers: color-only swaps (keep border-radius/shadows/sizes) ===== */
+.chat-container {
+  background: linear-gradient(135deg, var(--brand-900), var(--brand-700)) !important;
+  border: 1px solid rgba(148, 163, 184, .35) !important;
+  /* slate border */
+  box-shadow: 0 0 20px rgba(2, 6, 23, .35) !important;
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.04) !important;
+  border: 1px solid rgba(148, 163, 184, .25) !important;
+  box-shadow: 0 0 20px rgba(2, 6, 23, .25) !important;
+}
+
+/* Headings in cards/chat: keep size, change font/color */
+.chat-header h2,
+.card h2,
+.hw-title {
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif !important;
+  color: var(--ink) !important;
+  text-shadow: 0 0 10px rgba(59, 130, 246, .18) !important;
+}
+
+.hw-subtitle {
+  color: var(--muted) !important;
+}
+
+/* Messages */
+.message {
+  background: rgba(148, 163, 184, 0.08) !important;
+}
+
+.message:hover {
+  background: rgba(148, 163, 184, 0.14) !important;
+}
+
+.own-message {
+  background: linear-gradient(135deg, #93c5fd, #60a5fa) !important;
+  /* soft professional blue */
+  color: #0b0b19 !important;
+}
+
+/* Inputs & focus ring */
+#messageInput {
+  border: 1px solid rgba(148, 163, 184, .35) !important;
+  background: rgba(255, 255, 255, 0.06) !important;
+  color: var(--ink) !important;
+}
+
+#messageInput:focus {
+  border-color: var(--brand-blue) !important;
+  box-shadow: 0 0 8px rgba(59, 130, 246, .35) !important;
+}
+
+/* Send button */
+#sendBtn {
+  background: linear-gradient(135deg, #60a5fa, #3b82f6) !important;
+  color: #0b0b19 !important;
+  box-shadow: none !important;
+}
+
+/* Progress bar (XP) */
+.progress {
+  background: linear-gradient(90deg, #60a5fa, #3b82f6, #60a5fa) !important;
+}
+
+/* Lists hover */
+.events li:hover,
+.online-list li:hover {
+  color: var(--nav-accent) !important;
+}
+
+/* Footer colors */
+footer {
+  border-top: 1px solid rgba(148, 163, 184, .25) !important;
+  background-color: rgba(15, 23, 42, .85) !important;
+  color: var(--muted) !important;
+  text-shadow: none !important;
+}
+
+/* Hero gradient only color-tint (keeps spacing) */
+.hw-hero {
+  background: linear-gradient(180deg, rgba(15, 23, 42, 0) 0%, rgba(15, 23, 42, 0.55) 100%) !important;
+}
+
+/* === Unified Header (same look on all pages) === */
+:root {
+  --container-w: min(1100px, 92%);
+  --nav-start: #0f172a;
+  --nav-end: #1f2937;
+  --nav-accent: #3b82f6;
+  --nav-text: #fff;
+}
+
+body,
+.hw-body {
+  padding-top: 64px;
+}
+
+.site-nav {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background:
+    radial-gradient(1000px 600px at 10% -10%, rgba(59, 130, 246, .18), transparent 60%),
+    radial-gradient(900px 500px at 110% 10%, rgba(30, 64, 175, .16), transparent 60%),
+    linear-gradient(180deg, rgba(15, 23, 42, .95), rgba(31, 41, 55, .85));
+  border-bottom: 1px solid rgba(148, 163, 184, .35);
+  box-shadow: 0 8px 24px rgba(2, 6, 23, .45);
+  color: var(--nav-text);
+}
+
+.site-nav__wrap {
+  width: var(--container-w);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 0;
+}
+
+.site-brand {
+  margin: 0;
+  letter-spacing: .3px;
+  font: 700 18px/1 Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  color: #e5e7eb;
+  text-shadow: 0 0 8px rgba(59, 130, 246, .18);
+}
+
+.site-links {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.site-links a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 700;
+  opacity: .95;
+  padding: 8px 10px;
+  border-radius: 10px;
+  transition: .2s;
+}
+
+.site-links a:hover {
+  background: rgba(255, 255, 255, .12);
+  color: var(--nav-accent);
+}
+
+.btn-pill {
+  background: var(--nav-accent);
+  color: #0b0b19 !important;
+  padding: 8px 14px;
+  border-radius: 999px;
+  box-shadow: 0 8px 18px rgba(2, 6, 23, .35);
+}
+
+@media (max-width:520px) {
+  .site-links {
+    gap: 10px;
+  }
+
+  .site-brand {
+    font-size: 16px;
+  }
+}

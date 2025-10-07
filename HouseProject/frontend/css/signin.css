@@ -1,0 +1,551 @@
+/* Professional font */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background: radial-gradient(circle at top, #0b0b19, #000);
+  color: #f5f3e7;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Floating stars animation */
+@keyframes floatStars {
+  from {
+    transform: translateY(0px);
+    opacity: 0.7;
+  }
+
+  to {
+    transform: translateY(-1000px);
+    opacity: 0;
+  }
+}
+
+.stars {
+  position: fixed;
+  width: 2px;
+  height: 2px;
+  background: #f4e2a8;
+  animation: floatStars 10s linear infinite;
+  border-radius: 50%;
+  opacity: 0.6;
+}
+
+/* Generate random stars */
+.stars:nth-child(odd) {
+  animation-duration: 12s;
+}
+
+.stars:nth-child(even) {
+  animation-duration: 8s;
+}
+
+.container {
+  background: rgba(20, 20, 30, 0.85);
+  border: 1px solid rgba(182, 147, 58, 0.5);
+  border-radius: 16px;
+  padding: 40px 50px;
+  box-shadow: 0 0 25px rgba(182, 147, 58, 0.3);
+  text-align: center;
+  width: 420px;
+  backdrop-filter: blur(5px);
+  animation: fadeIn 1.2s ease-in-out;
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 2;
+}
+
+.container:hover {
+  box-shadow: 0 0 40px rgba(247, 215, 116, 0.4);
+  transform: scale(1.02);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+h1 {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 2.2em;
+  margin-bottom: 10px;
+  color: #f7d774;
+  text-shadow: 0 0 10px #f7d77470;
+  letter-spacing: 1px;
+}
+
+p {
+  font-size: 0.9em;
+  color: #ddd;
+  margin-bottom: 25px;
+}
+
+.input-group {
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: 8px;
+  color: #f7d774;
+  font-size: 0.9rem;
+}
+
+input {
+  width: 100%;
+  padding: 12px 15px;
+  margin: 5px 0;
+  border: 1px solid rgba(182, 147, 58, 0.3);
+  border-radius: 8px;
+  outline: none;
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  font-size: 0.95em;
+  transition: all 0.3s ease;
+}
+
+input:focus {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: #f7d774;
+  box-shadow: 0 0 8px rgba(247, 215, 116, 0.5);
+}
+
+button {
+  width: 100%;
+  padding: 14px;
+  background: linear-gradient(135deg, #b6933a, #f4e2a8);
+  border: none;
+  border-radius: 8px;
+  font-size: 1em;
+  color: #0b0b19;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+  box-shadow: 0 0 10px rgba(182, 147, 58, 0.5);
+}
+
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 15px rgba(247, 215, 116, 0.7);
+  background: linear-gradient(135deg, #f4e2a8, #b6933a);
+}
+
+.link {
+  color: #f7d774;
+  font-size: 0.9em;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.link:hover {
+  text-decoration: underline;
+  text-shadow: 0 0 5px rgba(247, 215, 116, 0.7);
+}
+
+.sorting {
+  font-size: 0.9em;
+  color: #f4e2a8;
+  margin-top: 15px;
+  display: none;
+}
+
+.house-glow {
+  display: none;
+  font-size: 1.2em;
+  margin-top: 20px;
+  animation: glow 1.2s infinite alternate;
+}
+
+@keyframes glow {
+  from {
+    text-shadow: 0 0 10px #f7d774;
+  }
+
+  to {
+    text-shadow: 0 0 25px #f4e2a8;
+  }
+}
+
+.message {
+  margin-top: 15px;
+  font-size: 0.9em;
+  color: #f87171;
+}
+
+/* Add some animated sparkles */
+@keyframes sparkle {
+
+  0%,
+  100% {
+    opacity: 0.2;
+    transform: scale(0.8);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+
+.sparkle {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: #f7d774;
+  border-radius: 50%;
+  animation: sparkle 2s infinite ease-in-out;
+}
+
+/* ========= Shared Header (drop into each page's CSS) ========= */
+/* Palette hooks — override per page (see section 3 below) */
+:root {
+  --nav-start: #3b5bdb;
+  /* fallback start */
+  --nav-end: #6c63ff;
+  /* fallback end   */
+  --nav-accent: #ffd700;
+  /* link hover / CTA */
+  --nav-text: #ffffff;
+  --nav-shadow: 0 8px 24px rgba(0, 0, 0, .35);
+  --container-w: min(1100px, 92%);
+}
+
+/* Make room for sticky header */
+body {
+  padding-top: 64px;
+}
+
+/* Header shell */
+.site-nav {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+
+  /* match the page's starry gradient + subtle dark overlay */
+  background:
+    radial-gradient(1000px 600px at 10% -10%, rgba(139, 92, 246, .20), transparent 60%),
+    radial-gradient(900px 500px at 110% 10%, rgba(59, 130, 246, .16), transparent 60%),
+    linear-gradient(180deg, rgba(13, 17, 23, 0.9), rgba(13, 17, 23, 0.75));
+
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(255, 255, 255, .1);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, .35);
+  color: var(--nav-text);
+}
+
+.site-nav__wrap {
+  width: var(--container-w);
+  margin-inline: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 0;
+}
+
+.site-brand {
+  margin: 0;
+  font-weight: 800;
+  letter-spacing: .3px;
+  font-size: 18px;
+}
+
+/* Links */
+.site-links {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.site-links a {
+  color: var(--nav-text);
+  text-decoration: none;
+  font-weight: 700;
+  opacity: .95;
+  padding: 8px 10px;
+  border-radius: 10px;
+  transition: .2s ease;
+}
+
+.site-links a:hover {
+  background: rgba(255, 255, 255, .14);
+  color: var(--nav-accent);
+}
+
+/* CTA */
+.btn-pill {
+  background: var(--nav-accent);
+  color: #1a1a1a !important;
+  padding: 8px 14px;
+  border-radius: 999px;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, .25);
+}
+
+.btn-pill:hover {
+  filter: brightness(1.05);
+}
+
+/* Small screens */
+@media (max-width: 520px) {
+  .site-links {
+    gap: 10px;
+  }
+
+  .site-brand {
+    font-size: 16px;
+  }
+}
+
+/* ===================== PROFESSIONAL THEME OVERRIDES (fonts + colors only) ===================== */
+
+/* Neutral slate + brand blue palette */
+:root {
+  --ink: #e5e7eb;
+  /* main text */
+  --muted: #cbd5e1;
+  /* secondary */
+  --edge: #334155;
+  /* borders */
+  --brand-900: #0f172a;
+  /* deep background */
+  --brand-800: #111827;
+  /* card gradient end */
+  --brand-700: #1f2937;
+  /* card gradient start */
+  --brand-blue: #3b82f6;
+  /* primary accent */
+
+  /* header/nav */
+  --nav-start: #0f172a;
+  --nav-end: #1f2937;
+  --nav-accent: #3b82f6;
+  --nav-text: #ffffff;
+}
+
+/* Global font swap (keep all sizes) + text color */
+* {
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif !important;
+}
+
+body {
+  color: var(--ink) !important;
+}
+
+/* Card/container color-only swap */
+.container {
+  background: linear-gradient(135deg, var(--brand-900), var(--brand-700)) !important;
+  border: 1px solid rgba(148, 163, 184, .35) !important;
+  box-shadow: 0 0 25px rgba(2, 6, 23, .4) !important;
+}
+
+.container:hover {
+  box-shadow: 0 0 40px rgba(2, 6, 23, .5) !important;
+}
+
+/* Headings & copy */
+h1 {
+  color: var(--ink) !important;
+  text-shadow: 0 0 10px rgba(59, 130, 246, .18) !important;
+  /* subtle blue glow */
+}
+
+p {
+  color: var(--muted) !important;
+}
+
+/* Labels & inputs */
+.input-group label {
+  color: var(--muted) !important;
+}
+
+input {
+  border: 1px solid rgba(148, 163, 184, .35) !important;
+  background: rgba(255, 255, 255, 0.06) !important;
+  color: var(--ink) !important;
+}
+
+input:focus {
+  background: rgba(255, 255, 255, 0.10) !important;
+  border-color: var(--brand-blue) !important;
+  box-shadow: 0 0 8px rgba(59, 130, 246, .35) !important;
+}
+
+/* --- Input group layout --- */
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin: 14px 0;
+}
+
+.input-group label {
+  font-weight: 600;
+  letter-spacing: .2px;
+}
+
+/* --- Select (House) --- */
+.input-group select {
+  /* reset */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+
+  width: 100%;
+  padding: 12px 40px 12px 12px;
+  border: 1px solid rgba(255, 255, 255, .25);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, .06);
+  color: #fff;
+
+  /* subtle glassy effect (adjust to your theme) */
+  backdrop-filter: blur(6px);
+
+  font-size: 16px;
+  line-height: 1.2;
+  transition: border-color .2s ease, box-shadow .2s ease, background .2s ease;
+}
+
+/* placeholder/empty option (because the first option has value="") */
+.input-group select:invalid {
+  color: #cbd5e1;
+  /* slate-300 */
+}
+
+/* Hover & focus */
+.input-group select:hover {
+  border-color: rgba(255, 255, 255, .4);
+  background: rgba(255, 255, 255, .08);
+}
+
+.input-group select:focus {
+  outline: none;
+  border-color: #7c4dff;
+  /* accent color */
+  box-shadow: 0 0 0 3px rgba(124, 77, 255, .25);
+}
+
+/* Disabled */
+.input-group select:disabled {
+  opacity: .6;
+  cursor: not-allowed;
+}
+
+/* --- Custom dropdown arrow --- */
+.input-group {
+  position: relative;
+}
+
+.input-group::after {
+  content: "";
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  width: 10px;
+  height: 10px;
+
+  /* tiny chevron via inline SVG so no extra file */
+  background-image: url("data:image/svg+xml;utf8,\
+  <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'>\
+    <path d='M7 10l5 5 5-5z'/>\
+  </svg>");
+  background-repeat: no-repeat;
+  background-size: 10px 10px;
+  opacity: .8;
+}
+
+/* Primary button → brand blue */
+button {
+  background: linear-gradient(135deg, #60a5fa, #3b82f6) !important;
+  color: #0b0b19 !important;
+  box-shadow: 0 0 10px rgba(96, 165, 250, .4) !important;
+}
+
+button:hover {
+  background: linear-gradient(135deg, #93c5fd, #60a5fa) !important;
+  box-shadow: 0 0 15px rgba(147, 197, 253, .55) !important;
+}
+
+/* Links */
+.link {
+  color: #93c5fd !important;
+  text-shadow: none !important;
+}
+
+.link:hover {
+  color: #60a5fa !important;
+  text-shadow: 0 0 5px rgba(96, 165, 250, .45) !important;
+}
+
+/* Status text colors */
+.sorting {
+  color: #93c5fd !important;
+}
+
+.house-glow {
+  color: var(--ink) !important;
+  text-shadow: 0 0 10px rgba(59, 130, 246, .2) !important;
+}
+
+.message {
+  color: #f87171 !important;
+}
+
+/* keep error red */
+
+/* Header/nav (if present on this page) */
+.site-nav {
+  background:
+    radial-gradient(1000px 600px at 10% -10%, rgba(59, 130, 246, .18), transparent 60%),
+    radial-gradient(900px 500px at 110% 10%, rgba(30, 64, 175, .16), transparent 60%),
+    linear-gradient(180deg, rgba(15, 23, 42, 0.95), rgba(31, 41, 55, 0.85)) !important;
+  border-bottom: 1px solid rgba(148, 163, 184, .35) !important;
+  box-shadow: 0 8px 24px rgba(2, 6, 23, .45) !important;
+  color: var(--nav-text) !important;
+}
+
+.site-brand {
+  color: var(--ink) !important;
+  text-shadow: 0 0 8px rgba(59, 130, 246, .18) !important;
+}
+
+.site-links a {
+  color: #ffffff !important;
+}
+
+.site-links a:hover {
+  background: rgba(255, 255, 255, .12) !important;
+  color: var(--nav-accent) !important;
+}
+
+.btn-pill {
+  background: var(--nav-accent) !important;
+  color: #0b0b19 !important;
+}
+
+/* Stars: keep animation & size, soften color */
+.stars {
+  background: #93c5fd !important;
+  opacity: .5 !important;
+}

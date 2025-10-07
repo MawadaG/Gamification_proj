@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gryffindor Common Room | Hogwarts Gamified Portal</title>
+    <link rel="stylesheet" href="../css/commonRoom.css">
+</head>
+
+<body>
+
+    <!-- Unified Header START -->
+    <header class="site-nav">
+        <div class="site-nav__wrap">
+            <h1 class="site-brand">🏆 Menu bar</h1>
+            <nav class="site-links">
+                <a href="homepage.html">Home</a>
+                <a href="upcoming.html">Events</a>
+                <a href="commonRoom.html">Rooms</a>
+
+                <!-- Shown when NOT logged in -->
+                <a id="loginLink" href="login.html">Login</a>
+                <a id="signupLink" href="signin.html" class="btn-pill">Sign Up</a>
+
+                <!-- Shown when logged in -->
+                <span id="welcomeName" style="display:none; margin-left:12px;"></span>
+                <button id="logoutBtn" style="display:none; margin-left:8px;">Logout</button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Unified Header END -->
+
+    <!-- Floating stars for background -->
+    <div class="stars"></div>
+    <div class="stars"></div>
+    <div class="stars"></div>
+    <div class="stars"></div>
+    <div class="stars"></div>
+    <div class="stars"></div>
+    <div class="stars"></div>
+    <div class="stars"></div>
+    <div class="stars"></div>
+    <div class="stars"></div>
+
+
+
+    <section class="hw-hero">
+        <div class="hw-hero__inner">
+            <h1 class="hw-title">IT Students Common Room 🦁</h1>
+            <p class="hw-subtitle">⚡ Level 7 | Welcome Back, Programmer!</p>
+        </div>
+    </section>
+
+    <main>
+        <div class="chat-container">
+            <div class="chat-header">
+                <h2>House Chat</h2>
+                <p>Share advice, quests, and event reminders with your fellow programmers!</p>
+            </div>
+
+            <div class="messages-area">
+                <div class="message">
+                    <div class="user-info">
+                        <strong>Jhon P.</strong> <span class="timestamp">2 min ago</span>
+                    </div>
+                    <p>Just aced the AI Club! Who's up for a rematch? 🗡️</p>
+                </div>
+
+                <div class="message own-message">
+                    <div class="user-info">
+                        <strong>You</strong> <span class="timestamp">5 min ago</span>
+                    </div>
+                    <p>That Data Mining Challenge is tough! Any tips on the Machine Learning bit? 🧪</p>
+                </div>
+
+                <div class="message">
+                    <div class="user-info">
+                        <strong>Sara G.</strong> <span class="timestamp">10 min ago</span>
+                    </div>
+                    <p>Remember, precision with the functions! Check page 247 in The Best programmer. 📖</p>
+                </div>
+
+                <div class="message">
+                    <div class="user-info">
+                        <strong>Freddy W.</strong> <span class="timestamp">15 min ago</span>
+                    </div>
+                    <p>Oi, the Coding Delivery Race is on Oct 14! My methods are unbeatable. 🦉 Who's racing?</p>
+                </div>
+            </div>
+
+            <div class="input-area">
+                <input type="text" id="messageInput" placeholder="Type your message... (Press Enter to send)"
+                    maxlength="500">
+                <button id="sendBtn">Send</button>
+            </div>
+        </div>
+
+        <div class="sidebar">
+            <div class="card">
+                <h2>House Points</h2>
+                <div class="progress-bar">
+                    <div class="progress" style="width: 85%;"></div>
+                </div>
+                <p>650 / 750 Points to Victory!</p>
+            </div>
+
+            <div class="card">
+                <h2>Active Quests</h2>
+                <ul class="events">
+                    <li>🧙 ACM Hackathon (Due Oct 10)</li>
+                    <li>🏰 House Cup Quiz (Oct 12)</li>
+                    <li>🦉 Code Race (Oct 14)</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h2>Online Housemates</h2>
+                <ul class="online-list">
+                    <li>• Jhon P.</li>
+                    <li>• Sara G.</li>
+                    <li>• Freddy W.</li>
+                    <li>• 12 others...</li>
+                </ul>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        © 2025 ACM Gamified Portal | Grinding Never Ends ✨
+    </footer>
+
+    <script>
+        // Simple JS for sending messages
+        const messageInput = document.getElementById('messageInput');
+        const sendBtn = document.getElementById('sendBtn');
+        const messagesArea = document.querySelector('.messages-area');
+
+        function addMessage(text, isOwn = false) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${isOwn ? 'own-message' : ''}`.trim();
+            messageDiv.innerHTML = `
+                <div class="user-info">
+                    <strong>${isOwn ? 'You' : 'Fellow Gryffindor'}</strong> <span class="timestamp">Just now</span>
+                </div>
+                <p>${text}</p>
+            `;
+            messagesArea.appendChild(messageDiv);
+            messagesArea.scrollTop = messagesArea.scrollHeight;
+        }
+
+        sendBtn.addEventListener('click', () => {
+            const text = messageInput.value.trim();
+            if (text) {
+                addMessage(text, true);
+                messageInput.value = '';
+                // Simulate reply after 2s
+                setTimeout(() => addMessage('Great point! Keep it up! 💪'), 2000);
+            }
+        });
+
+        messageInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') sendBtn.click();
+        });
+    </script>
+
+    <script src="../js/auth-nav.js"></script>
+
+</body>
+
+</html>

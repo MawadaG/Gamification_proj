@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hogwarts Enrollment</title>
+    <link rel="stylesheet" href="../css/signin.css">
+</head>
+
+<body>
+
+
+    <!-- Floating stars -->
+    <div class="stars" style="left:10%; top:90%; animation-delay:1s;"></div>
+    <div class="stars" style="left:20%; top:85%; animation-delay:2s;"></div>
+    <div class="stars" style="left:30%; top:95%; animation-delay:3s;"></div>
+    <div class="stars" style="left:40%; top:88%; animation-delay:4s;"></div>
+    <div class="stars" style="left:50%; top:92%; animation-delay:1s;"></div>
+    <div class="stars" style="left:60%; top:89%; animation-delay:2s;"></div>
+    <div class="stars" style="left:70%; top:95%; animation-delay:3s;"></div>
+    <div class="stars" style="left:80%; top:90%; animation-delay:4s;"></div>
+
+    <div class="container">
+        <h1>Enroll at ACM</h1>
+        <p>Begin your journey today</p>
+
+        <form>
+            <div class="input-group">
+                <label for="fullname">Full Name</label>
+                <input type="text" id="fullname" placeholder="Enter your full name" required>
+            </div>
+
+            <div class="input-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" placeholder="Your email address" required>
+            </div>
+
+            <div class="input-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" placeholder="Create a password" required>
+            </div>
+
+            <div class="input-group">
+                <label for="confirm-password">Confirm Password</label>
+                <input type="password" id="confirm-password" placeholder="Confirm your password" required>
+            </div>
+
+            <div class="input-group">
+                <label for="house">Choose your House</label>
+                <select id="house" required>
+                    <option value="">Loading houses...</option>
+                </select>
+            </div>
+
+            <button type="submit">Begin Your Journey</button>
+        </form>
+
+        <div class="sorting">
+            Signing you into your division..
+        </div>
+
+        <div class="house-glow">
+            Welcome!
+        </div>
+
+        <div class="message" id="message"></div>
+
+        <p>Already have an account? <a href="./login.html" class="link">Login here</a></p>
+    </div>
+
+    <!-- A few sparkles -->
+    <div class="sparkle" style="left: 30%; bottom: 20%; animation-delay: 1s;"></div>
+    <div class="sparkle" style="left: 60%; bottom: 25%; animation-delay: 2s;"></div>
+    <div class="sparkle" style="left: 80%; bottom: 15%; animation-delay: 3s;"></div>
+
+
+    <script>
+        const form = document.querySelector('form');
+        const msg = document.getElementById('message');
+        const houseSelect = document.getElementById('house');
+
+        // Populate houses on load
+        (async function loadHouses() {
+            try {
+                const res = await fetch('/api/houses');
+                const houses = await res.json();
+                houseSelect.innerHTML = '<option value="">Select a house</option>';
+                houses.forEach(h => {
+                    const opt = document.createElement('option');
+                    opt.value = h.name;           // we use .name as the identifier
+                    opt.textContent = h.name;     // visible text
+                    houseSelect.appendChild(opt);
+                });
+            } catch (e) {
+                houseSelect.innerHTML = '<option value="">Failed to load houses</option>';
+            }
+        })();
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            msg.textContent = '';
+
+            const name = document.getElementById('fullname').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirm-password').value;
+            const house = houseSelect.value; // selected house name
+
+            try {
+                const res = await fetch('/api/signup', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ name, email, password, confirmPassword, house })
+                });
+                const data = await res.json().catch(() => ({}));
+                if (!res.ok) throw new Error(data.error || 'Sign up failed');
+
+                // Auto-logged in by server → go to homepage
+                location.href = '/';
+            } catch (err) {
+                msg.textContent = err.message;
+                msg.style.color = 'salmon';
+            }
+        });
+    </script>
+
+
+</body>
+
+</html>

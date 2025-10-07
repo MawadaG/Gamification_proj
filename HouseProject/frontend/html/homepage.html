@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hogwarts Dashboard</title>
+  <link rel="stylesheet" href="../css/homepage.css">
+
+</head>
+
+<body>
+  <header class="site-nav">
+    <div class="site-nav__wrap">
+      <h1 class="site-brand">🏆 Menu bar</h1>
+      <nav class="site-links">
+        <a href="homepage.html">Home</a>
+        <a href="upcoming.html">Events</a>
+        <a href="commonRoom.html">Rooms</a>
+
+        <!-- Shown when NOT logged in -->
+        <a id="loginLink" href="login.html">Login</a>
+        <a id="signupLink" href="signin.html" class="btn-pill">Sign Up</a>
+
+        <!-- Shown when logged in -->
+        <span id="welcomeName" style="display:none; margin-left:12px;"></span>
+        <button id="logoutBtn" style="display:none; margin-left:8px;">Logout</button>
+      </nav>
+
+    </div>
+  </header>
+
+  <!-- Floating stars (10 random ones) -->
+  <div class="stars" style="left:10%; top:90%; animation-delay:1s;"></div>
+  <div class="stars" style="left:20%; top:85%; animation-delay:2s;"></div>
+  <div class="stars" style="left:30%; top:95%; animation-delay:3s;"></div>
+  <div class="stars" style="left:40%; top:88%; animation-delay:4s;"></div>
+  <div class="stars" style="left:50%; top:92%; animation-delay:1s;"></div>
+  <div class="stars" style="left:60%; top:89%; animation-delay:2s;"></div>
+  <div class="stars" style="left:70%; top:95%; animation-delay:3s;"></div>
+  <div class="stars" style="left:80%; top:90%; animation-delay:4s;"></div>
+
+
+  </header>
+  <section class="hw-hero">
+    <div class="hw-hero__inner">
+      <h1 class="hw-title">Hogwarts House Cup</h1>
+      <p id="subtitle" class="hw-subtitle"></p>
+    </div>
+    <p id="housePoints" class="house-points"></p>
+
+  </section>
+
+  <main>
+    <div class="card">
+      <h2>XP Progress</h2>
+      <div class="progress-bar">
+        <div class="progress" id="progressBar"></div>
+      </div>
+      <p id="xpText"></p>
+    </div>
+
+    <div class="card">
+      <h2>Badges</h2>
+      <div class="badges" id="badges">
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Daily Streak</h2>
+      <p class="streak" id="streak">🔥</p>
+      <p>Keep up your consistency to earn bonus XP!</p>
+    </div>
+
+    <div class="card">
+      <h2>Leaderboard (Top 5)</h2>
+      <ol id="leadersList" class="leaders"></ol>
+    </div>
+
+
+    <a href="upcoming.html" class="card-link">
+      <div class="card">
+        <h2>Upcoming Events</h2>
+        <ul class="events">
+          <li>🧙 Potion Brewing Challenge – Oct 10</li>
+          <li>🏰 House Cup Quiz – Oct 12</li>
+          <li>🦉 Owl Delivery Race – Oct 14</li>
+        </ul>
+      </div>
+    </a>
+
+  </main>
+
+  <div class="card house-chat">
+    <h2>🏰 House Common Room</h2>
+    <p>Connect with your housemates, share your progress, and earn bonus points together!</p>
+    <button class="enter-chat"><a href="./commonRoom.html">Enter Common Room</a></button>
+  </div>
+
+  <footer>
+    © 2025 Hogwarts Gamified Portal | Magic Never Ends ✨
+  </footer>
+
+  <!-- A few sparkles near footer -->
+  <div class="sparkle" style="left: 30%; bottom: 10%; animation-delay: 1s;"></div>
+  <div class="sparkle" style="left: 60%; bottom: 8%; animation-delay: 2s;"></div>
+  <div class="sparkle" style="left: 80%; bottom: 12%; animation-delay: 3s;"></div>
+
+  <script>
+    (async function () {
+      // 1) Get logged-in user
+      const res = await fetch('/api/me', { credentials: 'same-origin' });
+      if (res.status === 401) { location.href = '/login'; return; }
+      if (!res.ok) { console.error('Failed /api/me', await res.text()); return; }
+      const u = await res.json();
+
+      // --- Fill profile UI ---
+      const subtitle = document.getElementById('subtitle');
+      if (subtitle) subtitle.textContent = `⚡ Level ${u.level} | ${u.house}`;
+
+      const xpToNext = 1000;
+      const current = Math.max(0, Math.min(xpToNext, Number(u.points) || 0));
+      const pct = Math.round((current / xpToNext) * 100);
+      const bar = document.getElementById('progressBar');
+      if (bar) bar.style.width = pct + '%';
+      const xpText = document.getElementById('xpText');
+      if (xpText) xpText.textContent = `${current} / ${xpToNext} XP to next level`;
+
+      const badgesWrap = document.getElementById('badges');
+      if (badgesWrap) {
+        badgesWrap.innerHTML = '';
+        (Array.isArray(u.badges) ? u.badges : []).forEach(b => {
+          const div = document.createElement('div');
+          div.className = 'badge';
+          div.textContent = b;
+          badgesWrap.appendChild(div);
+        });
+      }
+
+      const streak = document.getElementById('streak');
+      if (streak) streak.textContent = `🔥 ${u.streak || 0} days in a row!`;
+
+      // 2) Load houses (build houseMap for colors, show points)
+      let houseMap = new Map();
+      try {
+        const housesRes = await fetch('/api/houses');
+        if (housesRes.ok) {
+          const houses = await housesRes.json();
+          houseMap = new Map(houses.map(h => [h.name, h.color]));
+
+          const myHouse = houses.find(h => h.name === u.house);
+          if (myHouse) {
+            const hero = document.getElementById('hero');
+            if (hero) hero.style.boxShadow = `0 0 0 100vmax ${myHouse.color}20 inset`;
+            const hp = document.getElementById('housePoints');
+            if (hp) hp.textContent = `🏠 ${myHouse.name} House Points: ${myHouse.points}`;
+          }
+        }
+      } catch (e) { console.error('houses error:', e); }
+
+      // 3) Leaderboard (use houseMap safely)
+      try {
+        const lbRes = await fetch('/api/leaderboard');
+        if (lbRes.ok) {
+          const leaders = await lbRes.json();
+          const top5 = leaders.slice(0, 5);
+          const list = document.getElementById('leadersList');
+          if (list) {
+            list.innerHTML = '';
+            top5.forEach((r, i) => {
+              const color = (houseMap && houseMap.get) ? (houseMap.get(r.house) || '#888') : '#888';
+              const li = document.createElement('li');
+              li.innerHTML = `
+            <span class="who">
+              <span>${r.rank ?? (i + 1)}.</span>
+              <span class="dot" style="background:${color}"></span>
+              <strong>${r.name}</strong>
+              <small style="opacity:.7;">(${r.house})</small>
+            </span>
+            <strong>${r.points}</strong>
+          `;
+              list.appendChild(li);
+            });
+          }
+        }
+      } catch (e) { console.error('leaderboard error:', e); }
+
+    })();
+  </script>
+
+
+  <script src="../js/auth-nav.js"></script>
+
+</body>
+
+</html>

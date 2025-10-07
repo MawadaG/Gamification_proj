@@ -1,0 +1,427 @@
+/* Professional font */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background: radial-gradient(circle at top, #0b0b19, #000);
+  color: #f5f3e7;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Floating stars animation */
+@keyframes floatStars {
+  from {
+    transform: translateY(0px);
+    opacity: 0.7;
+  }
+
+  to {
+    transform: translateY(-1000px);
+    opacity: 0;
+  }
+}
+
+.stars {
+  position: fixed;
+  width: 2px;
+  height: 2px;
+  background: #f4e2a8;
+  animation: floatStars 10s linear infinite;
+  border-radius: 50%;
+  opacity: 0.6;
+}
+
+/* Generate random stars */
+.stars:nth-child(odd) {
+  animation-duration: 12s;
+}
+
+.stars:nth-child(even) {
+  animation-duration: 8s;
+}
+
+/* Login container */
+.login-container {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 420px;
+  padding: 20px;
+}
+
+/* Login card */
+.login-card {
+  background: rgba(20, 20, 30, 0.85);
+  border: 1px solid rgba(182, 147, 58, 0.5);
+  border-radius: 16px;
+  padding: 40px 30px;
+  text-align: center;
+  box-shadow: 0 0 25px rgba(182, 147, 58, 0.3);
+  transition: all 0.3s ease-in-out;
+}
+
+.login-card:hover {
+  box-shadow: 0 0 40px rgba(247, 215, 116, 0.4);
+  transform: scale(1.02);
+}
+
+/* Logo and tagline */
+.logo {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 2.2rem;
+  color: #f7d774;
+  text-shadow: 0 0 10px #f7d77470;
+  margin-bottom: 10px;
+  letter-spacing: 1px;
+}
+
+.tagline {
+  font-size: 0.95rem;
+  color: #ddd;
+  margin-bottom: 25px;
+}
+
+/* Inputs */
+.input-group {
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: 8px;
+  color: #f7d774;
+  font-size: 0.9rem;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 12px 15px;
+  border-radius: 8px;
+  border: 1px solid rgba(182, 147, 58, 0.3);
+  outline: none;
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+}
+
+.input-group input:focus {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: #f7d774;
+  box-shadow: 0 0 8px rgba(247, 215, 116, 0.5);
+}
+
+/* Button */
+.login-btn {
+  width: 100%;
+  padding: 14px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #b6933a, #f4e2a8);
+  color: #0b0b19;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 10px rgba(182, 147, 58, 0.5);
+}
+
+.login-btn:hover {
+  background: linear-gradient(135deg, #f4e2a8, #b6933a);
+  transform: translateY(-2px);
+  box-shadow: 0 0 15px rgba(247, 215, 116, 0.7);
+}
+
+/* Signup link */
+.signup-link {
+  margin-top: 25px;
+  font-size: 0.9rem;
+  color: #bbb;
+}
+
+.signup-link a {
+  color: #f7d774;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.signup-link a:hover {
+  text-decoration: underline;
+  text-shadow: 0 0 5px rgba(247, 215, 116, 0.7);
+}
+
+/* Add some animated sparkles */
+@keyframes sparkle {
+
+  0%,
+  100% {
+    opacity: 0.2;
+    transform: scale(0.8);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+
+.sparkle {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: #f7d774;
+  border-radius: 50%;
+  animation: sparkle 2s infinite ease-in-out;
+}
+
+/* ========= Shared Header (drop into each page's CSS) ========= */
+/* Palette hooks — override per page (see section 3 below) */
+:root {
+  --nav-start: #3b5bdb;
+  /* fallback start */
+  --nav-end: #6c63ff;
+  /* fallback end   */
+  --nav-accent: #ffd700;
+  /* link hover / CTA */
+  --nav-text: #ffffff;
+  --nav-shadow: 0 8px 24px rgba(0, 0, 0, .35);
+  --container-w: min(1100px, 92%);
+}
+
+/* Make room for sticky header */
+body {
+  padding-top: 64px;
+}
+
+/* Header shell */
+.site-nav {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+
+  /* match the page's starry gradient + subtle dark overlay */
+  background:
+    radial-gradient(1000px 600px at 10% -10%, rgba(139, 92, 246, .20), transparent 60%),
+    radial-gradient(900px 500px at 110% 10%, rgba(59, 130, 246, .16), transparent 60%),
+    linear-gradient(180deg, rgba(13, 17, 23, 0.9), rgba(13, 17, 23, 0.75));
+
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(255, 255, 255, .1);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, .35);
+  color: var(--nav-text);
+}
+
+.site-nav__wrap {
+  width: var(--container-w);
+  margin-inline: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 0;
+}
+
+.site-brand {
+  margin: 0;
+  font-weight: 800;
+  letter-spacing: .3px;
+  font-size: 18px;
+}
+
+/* Links */
+.site-links {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.site-links a {
+  color: var(--nav-text);
+  text-decoration: none;
+  font-weight: 700;
+  opacity: .95;
+  padding: 8px 10px;
+  border-radius: 10px;
+  transition: .2s ease;
+}
+
+.site-links a:hover {
+  background: rgba(255, 255, 255, .14);
+  color: var(--nav-accent);
+}
+
+/* CTA */
+.btn-pill {
+  background: var(--nav-accent);
+  color: #1a1a1a !important;
+  padding: 8px 14px;
+  border-radius: 999px;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, .25);
+}
+
+.btn-pill:hover {
+  filter: brightness(1.05);
+}
+
+/* Small screens */
+@media (max-width: 520px) {
+  .site-links {
+    gap: 10px;
+  }
+
+  .site-brand {
+    font-size: 16px;
+  }
+}
+
+/* ===================== PROFESSIONAL THEME OVERRIDES (fonts + colors only) ===================== */
+
+/* Neutral slate + brand blue */
+:root {
+  --ink: #e5e7eb;
+  /* main text */
+  --muted: #cbd5e1;
+  /* secondary text */
+  --edge: #334155;
+  /* borders */
+  --brand-900: #0f172a;
+  /* deep background */
+  --brand-800: #111827;
+  /* card gradient end */
+  --brand-700: #1f2937;
+  /* card gradient start */
+  --brand-blue: #3b82f6;
+  /* primary accent */
+
+  /* header/nav */
+  --nav-start: #0f172a;
+  --nav-end: #1f2937;
+  --nav-accent: #3b82f6;
+  --nav-text: #ffffff;
+}
+
+/* Font family swap (keep sizes) + text color */
+* {
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif !important;
+}
+
+body {
+  color: var(--ink) !important;
+}
+
+/* Header look only (same spacing/positioning) */
+.site-nav {
+  background:
+    radial-gradient(1000px 600px at 10% -10%, rgba(59, 130, 246, .18), transparent 60%),
+    radial-gradient(900px 500px at 110% 10%, rgba(30, 64, 175, .16), transparent 60%),
+    linear-gradient(180deg, rgba(15, 23, 42, 0.95), rgba(31, 41, 55, 0.85)) !important;
+  border-bottom: 1px solid rgba(148, 163, 184, .35) !important;
+  box-shadow: 0 8px 24px rgba(2, 6, 23, .45) !important;
+  color: var(--nav-text) !important;
+}
+
+.site-brand,
+header h1 {
+  color: var(--ink) !important;
+  text-shadow: 0 0 8px rgba(59, 130, 246, .18) !important;
+}
+
+.site-links a {
+  color: #ffffff !important;
+}
+
+.site-links a:hover {
+  background: rgba(255, 255, 255, .12) !important;
+  color: var(--nav-accent) !important;
+}
+
+.btn-pill {
+  background: var(--nav-accent) !important;
+  color: #0b0b19 !important;
+  box-shadow: 0 8px 18px rgba(2, 6, 23, .35) !important;
+}
+
+/* Login card colors only (no size change) */
+.login-card {
+  background: linear-gradient(135deg, var(--brand-900), var(--brand-700)) !important;
+  border: 1px solid rgba(148, 163, 184, .35) !important;
+  box-shadow: 0 0 25px rgba(2, 6, 23, .40) !important;
+}
+
+.login-card:hover {
+  box-shadow: 0 0 40px rgba(2, 6, 23, .50) !important;
+}
+
+/* Logo & tagline typography color */
+.logo {
+  color: var(--ink) !important;
+  text-shadow: 0 0 10px rgba(59, 130, 246, .18) !important;
+}
+
+.tagline {
+  color: var(--muted) !important;
+}
+
+/* Inputs & labels */
+.input-group label {
+  color: var(--muted) !important;
+}
+
+.input-group input {
+  border: 1px solid rgba(148, 163, 184, .35) !important;
+  background: rgba(255, 255, 255, 0.06) !important;
+  color: var(--ink) !important;
+}
+
+.input-group input:focus {
+  background: rgba(255, 255, 255, 0.10) !important;
+  border-color: var(--brand-blue) !important;
+  box-shadow: 0 0 8px rgba(59, 130, 246, .35) !important;
+}
+
+/* Primary button → brand blue */
+.login-btn {
+  background: linear-gradient(135deg, #60a5fa, #3b82f6) !important;
+  color: #0b0b19 !important;
+  box-shadow: 0 0 10px rgba(96, 165, 250, .40) !important;
+}
+
+.login-btn:hover {
+  background: linear-gradient(135deg, #93c5fd, #60a5fa) !important;
+  box-shadow: 0 0 15px rgba(147, 197, 253, .55) !important;
+}
+
+/* Signup link */
+.signup-link {
+  color: var(--muted) !important;
+}
+
+.signup-link a {
+  color: #93c5fd !important;
+  text-shadow: none !important;
+}
+
+.signup-link a:hover {
+  color: #60a5fa !important;
+  text-shadow: 0 0 5px rgba(96, 165, 250, .45) !important;
+}
+
+/* Stars: keep animation/size, soften color */
+.stars {
+  background: #93c5fd !important;
+  opacity: .5 !important;
+}
