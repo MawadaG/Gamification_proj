@@ -1,0 +1,87 @@
+[
+  {
+    "id": 1,
+    "name": "Alice Johnson",
+    "email": "alice.johnson@university.edu",
+    "house": "Engineering",
+    "points": 750,
+    "level": 4,
+    "streak": 7,
+    "badges": [
+      "💡 Innovator",
+      "📖 Research Star"
+    ],
+    "lastActive": "2025-10-07T09:00:00Z",
+    "password": "password123"
+  },
+  {
+    "id": 2,
+    "name": "Bob Smith",
+    "email": "bob.smith@university.edu",
+    "house": "Health Science",
+    "points": 520,
+    "level": 3,
+    "streak": 5,
+    "badges": [
+      "💡 Innovator"
+    ],
+    "lastActive": "2025-10-06T18:30:00Z",
+    "password": "password123"
+  },
+  {
+    "id": 3,
+    "name": "Clara Lee",
+    "email": "clara.lee@university.edu",
+    "house": "Business",
+    "points": 890,
+    "level": 5,
+    "streak": 10,
+    "badges": [
+      "📖 Research Star",
+      "🏆 Leadership Pro"
+    ],
+    "lastActive": "2025-10-07T07:45:00Z",
+    "password": "password123"
+  },
+  {
+    "id": 4,
+    "name": "David Kim",
+    "email": "david.kim@university.edu",
+    "house": "IT",
+    "points": 430,
+    "level": 3,
+    "streak": 3,
+    "badges": [
+      "💻 Code Champ"
+    ],
+    "lastActive": "2025-10-05T21:15:00Z",
+    "password": "password123"
+  },
+  {
+    "id": 5,
+    "name": "Emma Wilson",
+    "email": "emma.wilson@university.edu",
+    "house": "Engineering",
+    "points": 610,
+    "level": 4,
+    "streak": 6,
+    "badges": [
+      "💡 Innovator",
+      "💻 Code Champ"
+    ],
+    "lastActive": "2025-10-07T11:20:00Z",
+    "password": "password123"
+  },
+  {
+    "id": 6,
+    "name": "Mawada Ghalab",
+    "email": "mawadaghalab@gmail.com",
+    "house": "Engineering",
+    "points": 0,
+    "level": 1,
+    "streak": 0,
+    "badges": [],
+    "lastActive": "2025-10-07T22:26:53.201Z",
+    "password": "mmaa"
+  }
+]

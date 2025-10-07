@@ -1,0 +1,7 @@
+[
+  { "rank": 1, "name": "Clara Lee", "house": "Business", "points": 890 },
+  { "rank": 2, "name": "Alice Johnson", "house": "Engineering", "points": 750 },
+  { "rank": 3, "name": "Emma Wilson", "house": "Engineering", "points": 610 },
+  { "rank": 4, "name": "Bob Smith", "house": "Health Science", "points": 520 },
+  { "rank": 5, "name": "David Kim", "house": "IT", "points": 430 }
+]

@@ -1,0 +1,6 @@
+[
+  { "id": 1, "name": "Engineering", "points": 0, "color": "#004080" },
+  { "id": 2, "name": "IT", "points": 0, "color": "#0073e6" },
+  { "id": 3, "name": "Business", "points": 0, "color": "#0099cc" },
+  { "id": 4, "name": "Health Science", "points": 0, "color": "#33cccc" }
+]

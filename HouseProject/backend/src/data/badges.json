@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "name": "Innovator",
+    "description": "Completed your first innovative project",
+    "condition": "First project completion"
+  },
+  {
+    "id": 2,
+    "name": "Research Star",
+    "description": "Submitted a research paper",
+    "condition": "Paper submitted"
+  },
+  {
+    "id": 3,
+    "name": "Code Champ",
+    "description": "Won a coding competition",
+    "condition": "Competition victory"
+  },
+  {
+    "id": 4,
+    "name": "Leadership Pro",
+    "description": "Organized a successful event",
+    "condition": "Event organized"
+  },
+  {
+    "id": 5,
+    "name": "Creative Genius",
+    "description": "Contributed outstanding creative work",
+    "condition": "Creative contribution"
+  }
+]

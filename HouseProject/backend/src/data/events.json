@@ -1,0 +1,7 @@
+[
+  { "id": 1, "title": "Hackathon Challenge", "date": "2025-10-15", "house": "IT" },
+  { "id": 2, "title": "Clinical Practice", "date": "2025-10-18", "house": "Health Science" },
+  { "id": 3, "title": "Leadership Summit", "date": "2025-10-21", "house": "Business" },
+  { "id": 4, "title": "Coding Workshop", "date": "2025-10-20", "house": "IT" },
+  { "id": 5, "title": "Building Workshop", "date": "2025-10-16", "house": "Engineering" }
+]
