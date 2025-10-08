@@ -9,6 +9,14 @@ Aysha
 Dania 
 ---
 
+Website link:
+https://gamification-proj.onrender.com/login
+
+If you prefer not to create an account, you can log in with the following credentials:
+bob.smith@university.edu 
+password123
+
+---
 ## ▶️ Run Locally
 
 **Prerequisite:** Node.js v18+ (tested on v22.19.0)
